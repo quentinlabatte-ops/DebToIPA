@@ -393,8 +393,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tsolomko/SWCompression";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.9.1;
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.8.7;
 			};
 		};
 		CE66019828F85705000EC344 /* XCRemoteSwiftPackageReference "ArArchiveKit" */ = {
