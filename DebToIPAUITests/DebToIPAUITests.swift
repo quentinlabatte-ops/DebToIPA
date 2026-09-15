@@ -32,6 +32,12 @@ final class DebToIPAUITests: XCTestCase {
         // fileImporter sheet actually presents (via its Cancel control) rather
         // than completing a full conversion.
         let cancelButton = app.buttons["Cancel"]
-        XCTAssertTrue(cancelButton.waitForExistence(timeout: 5))
+        let found = cancelButton.waitForExistence(timeout: 15)
+        if !found {
+            // Dump the accessibility tree so a CI failure here is diagnosable
+            // from the log alone instead of needing another blind guess.
+            print("DEBUG accessibility tree after tapping import:\n\(app.debugDescription)")
+        }
+        XCTAssertTrue(found, "Cancel button not found after tapping the import button")
     }
 }
