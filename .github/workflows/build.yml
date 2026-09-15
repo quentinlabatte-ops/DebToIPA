@@ -14,11 +14,20 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
 
+      - name: Cache DerivedData (device)
+        uses: actions/cache@v4
+        with:
+          path: DerivedData
+          key: derived-device-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            derived-device-
+
       - name: Resolve Swift Package dependencies
         run: |
           xcodebuild -resolvePackageDependencies \
             -project DebToIPA.xcodeproj \
-            -scheme "deb-to-ipa-app"
+            -scheme "deb-to-ipa-app" \
+            -derivedDataPath DerivedData
 
       - name: Build
         run: |
@@ -47,11 +56,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Cache DerivedData (simulator)
+        uses: actions/cache@v4
+        with:
+          path: DerivedData
+          key: derived-simulator-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            derived-simulator-
+
       - name: Resolve Swift Package dependencies
         run: |
           xcodebuild -resolvePackageDependencies \
             -project DebToIPA.xcodeproj \
-            -scheme "deb-to-ipa-app"
+            -scheme "deb-to-ipa-app" \
+            -derivedDataPath DerivedData
 
       - name: Run XCUITests on iOS Simulator
         run: |
@@ -75,4 +93,5 @@ jobs:
             -project DebToIPA.xcodeproj \
             -scheme "deb-to-ipa-app" \
             -destination "platform=iOS Simulator,id=$DEVICE_UDID" \
+            -derivedDataPath DerivedData \
             CODE_SIGNING_ALLOWED=NO
