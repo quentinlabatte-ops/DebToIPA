@@ -26,4 +26,18 @@ jobs:
             -project DebToIPA.xcodeproj \
             -scheme "deb-to-ipa-app" \
             -destination "generic/platform=iOS" \
+            -derivedDataPath DerivedData \
             CODE_SIGNING_ALLOWED=NO
+
+      - name: Package unsigned .ipa (for TrollStore-style sideloading)
+        run: |
+          APP_PATH="DerivedData/Build/Products/Debug-iphoneos/DebToIPA.app"
+          mkdir -p ipa_root/Payload
+          cp -R "$APP_PATH" ipa_root/Payload/
+          (cd ipa_root && zip -rq ../DebToIPA.ipa Payload)
+
+      - name: Upload .ipa artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DebToIPA-unsigned-ipa
+          path: DebToIPA.ipa
