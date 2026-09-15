@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0347B89615462C1C0B34E2 /* DebToIPAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC16474D8E56685A3DCB0E16 /* DebToIPAUITests.swift */; };
 		CE1D968128F9E3D7006AC6D2 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = CE1D968028F9E3D7006AC6D2 /* Zip */; };
 		CE1D968428F9E781006AC6D2 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = CE1D968328F9E781006AC6D2 /* SWCompression */; };
 		CE1D968B28FA045B006AC6D2 /* DebToIPA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D968A28FA045B006AC6D2 /* DebToIPA.swift */; };
@@ -17,7 +18,18 @@
 		CE66019A28F85705000EC344 /* ArArchiveKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE66019928F85705000EC344 /* ArArchiveKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		50DE418EB390AD808E945AAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE66017F28F83F33000EC344 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE66018628F83F33000EC344;
+			remoteInfo = DebToIPA;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4FEA4FFAB7B5F782F076D82A /* DebToIPAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DebToIPAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D968A28FA045B006AC6D2 /* DebToIPA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebToIPA.swift; sourceTree = "<group>"; };
 		CE3EEFC428FB23FD00096E1D /* DebToIPAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebToIPAView.swift; sourceTree = "<group>"; };
 		CE66018728F83F33000EC344 /* DebToIPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebToIPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,9 +38,17 @@
 		CE66019128F83F34000EC344 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CEB681E628FB539E00E65A2B /* AppSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppSupport.framework; path = ../../../theos/sdks/iPhoneOS14.5.sdk/System/Library/PrivateFrameworks/AppSupport.framework; sourceTree = "<group>"; };
 		CEC141FF28FE024600596DC3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		FC16474D8E56685A3DCB0E16 /* DebToIPAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebToIPAUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A737477AA6BB07CF76009918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE66018428F83F33000EC344 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,6 +68,7 @@
 				CE66018928F83F33000EC344 /* DebToIPA */,
 				CE66018828F83F33000EC344 /* Products */,
 				CE7B175B28F9D4E000B65A74 /* Frameworks */,
+				E2C14524BD79881F74141C67 /* DebToIPAUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				CE66018728F83F33000EC344 /* DebToIPA.app */,
+				4FEA4FFAB7B5F782F076D82A /* DebToIPAUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,9 +110,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E2C14524BD79881F74141C67 /* DebToIPAUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FC16474D8E56685A3DCB0E16 /* DebToIPAUITests.swift */,
+			);
+			path = DebToIPAUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		47924FB5BB0392A4743DE712 /* DebToIPAUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B23C43B98152B6FB2D9AFB21 /* Build configuration list for PBXNativeTarget "DebToIPAUITests" */;
+			buildPhases = (
+				57714AFC9907B0B864562375 /* Sources */,
+				A737477AA6BB07CF76009918 /* Frameworks */,
+				C14A4C9E9AF3C79345895131 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				73DA4E4F8B3E380A55E51BDD /* PBXTargetDependency */,
+			);
+			name = DebToIPAUITests;
+			productName = DebToIPAUITests;
+			productReference = 4FEA4FFAB7B5F782F076D82A /* DebToIPAUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CE66018628F83F33000EC344 /* DebToIPA */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE66019528F83F34000EC344 /* Build configuration list for PBXNativeTarget "DebToIPA" */;
@@ -148,11 +196,19 @@
 			projectRoot = "";
 			targets = (
 				CE66018628F83F33000EC344 /* DebToIPA */,
+				47924FB5BB0392A4743DE712 /* DebToIPAUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C14A4C9E9AF3C79345895131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE66018528F83F33000EC344 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,6 +221,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		57714AFC9907B0B864562375 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B0347B89615462C1C0B34E2 /* DebToIPAUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE66018328F83F33000EC344 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -177,7 +241,30 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		73DA4E4F8B3E380A55E51BDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE66018628F83F33000EC344 /* DebToIPA */;
+			targetProxy = 50DE418EB390AD808E945AAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		C7BB48C59C32D262E21630C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92S6JX27W2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sourceloc.DebToIPAUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DebToIPA;
+			};
+			name = Release;
+		};
 		CE66019328F83F34000EC344 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -365,9 +452,33 @@
 			};
 			name = Release;
 		};
+		D9094AACBDA08FDF03CB25A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92S6JX27W2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.sourceloc.DebToIPAUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DebToIPA;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B23C43B98152B6FB2D9AFB21 /* Build configuration list for PBXNativeTarget "DebToIPAUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9094AACBDA08FDF03CB25A0 /* Debug */,
+				C7BB48C59C32D262E21630C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE66018228F83F33000EC344 /* Build configuration list for PBXProject "DebToIPA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

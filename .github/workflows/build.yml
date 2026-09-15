@@ -42,7 +42,7 @@ jobs:
           name: DebToIPA-unsigned-ipa
           path: DebToIPA.ipa
 
-  simulator-smoke-test:
+  ui-tests:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -53,18 +53,9 @@ jobs:
             -project DebToIPA.xcodeproj \
             -scheme "deb-to-ipa-app"
 
-      - name: Build for iOS Simulator
+      - name: Run XCUITests on iOS Simulator
         run: |
-          xcodebuild build \
-            -project DebToIPA.xcodeproj \
-            -scheme "deb-to-ipa-app" \
-            -destination "generic/platform=iOS Simulator" \
-            -derivedDataPath DerivedData \
-            CODE_SIGNING_ALLOWED=NO
-
-      - name: Boot simulator, install and launch the app
-        run: |
-          set -e
+          set -o pipefail
 
           DEVICE_UDID=$(xcrun simctl list devices available -j | python3 -c "
           import json, sys
@@ -80,21 +71,8 @@ jobs:
           ")
           echo "Using simulator $DEVICE_UDID"
 
-          xcrun simctl boot "$DEVICE_UDID" || true
-          xcrun simctl bootstatus "$DEVICE_UDID" -b
-
-          APP_PATH=$(find DerivedData/Build/Products -maxdepth 2 -name "DebToIPA.app" -print -quit)
-          echo "Installing $APP_PATH"
-          xcrun simctl install "$DEVICE_UDID" "$APP_PATH"
-          xcrun simctl launch "$DEVICE_UDID" net.sourceloc.DebToIPA
-
-          echo "Waiting 5s to check the app doesn't immediately crash..."
-          sleep 5
-
-          if xcrun simctl spawn "$DEVICE_UDID" launchctl list | grep -q net.sourceloc.DebToIPA; then
-            echo "App still running 5s after launch - no immediate crash"
-          else
-            echo "App is NOT running 5s after launch - it likely crashed on launch"
-            xcrun simctl spawn "$DEVICE_UDID" log show --last 1m --predicate 'process == "DebToIPA"' || true
-            exit 1
-          fi
+          xcodebuild test \
+            -project DebToIPA.xcodeproj \
+            -scheme "deb-to-ipa-app" \
+            -destination "platform=iOS Simulator,id=$DEVICE_UDID" \
+            CODE_SIGNING_ALLOWED=NO
